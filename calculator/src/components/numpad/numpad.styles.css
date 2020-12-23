@@ -1,0 +1,7 @@
+.numbers-layout {
+  grid-column: 1 / 4;
+  grid-row: 3 / 7;
+  display: flex;
+  flex-flow: row wrap;
+  
+}

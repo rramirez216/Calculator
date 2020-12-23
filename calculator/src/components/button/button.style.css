@@ -1,0 +1,15 @@
+.button {
+  width: 75px;
+  height: 83.33px;
+  border: 1px solid black;
+  border-radius: 15%;
+  font-size: 2rem;
+}
+
+.zero {
+  width: 150px;
+  height: 83.33px;
+  border: 1px solid black;
+  font-size: 2rem;
+  border-radius: 15%;
+}
