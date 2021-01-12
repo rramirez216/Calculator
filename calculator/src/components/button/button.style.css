@@ -2,7 +2,7 @@
   width: 75px;
   height: 83.33px;
   border: 1px solid black;
-  border-radius: 15%;
+  border-radius: 50%;
   font-size: 2rem;
 }
 
@@ -11,5 +11,5 @@
   height: 83.33px;
   border: 1px solid black;
   font-size: 2rem;
-  border-radius: 15%;
+  border-radius: 50%;
 }

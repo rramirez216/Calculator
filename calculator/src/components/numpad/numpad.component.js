@@ -10,6 +10,7 @@ export const Numpad = props => (
       <Button 
         key={value.id} 
         buttonNumber={value}
+        handleNumber={props.handleNumber}
       />
       ))}
   </div>

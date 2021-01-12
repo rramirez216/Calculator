@@ -10,23 +10,25 @@ import { Operators } from '../math-operators/math-operators.component'
 export const Calculator = props => (
   <main className='calculator-layout'>
     <Display
-      currentNumber={props.currentNumber}
+      currentNumber={ props.currentNumber }
     />
 
     <Clear
-
+      handleClearButton={ props.handleClearButton }
     />
 
     <Numpad
-      numbers={props.buttonNumbers}
+      numbers={ props.buttonNumbers }
+      handleNumber={ props.handleNumber }
     />
 
     <Operators
-      operators={props.operators}
+      operators={ props.operators }
+      handleOperatorButton={ props.handleOperatorButton }
     />
 
     <Equal 
-
+      handleEqual={ props.handleEqual }
     />
   </main>
 )
