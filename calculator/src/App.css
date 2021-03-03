@@ -6,3 +6,13 @@
   justify-content: center;
   align-items: center;
 }
+
+
+@font-face{
+  font-family: Pixelar;
+  src:url("./fonts/5203318/721d4e20-8184-4420-b74c-533ff148bb71.woff2") format("woff2"),url("fonts/5203318/f6d2b101-c6f7-4624-aa2e-8ae22bd1e375.woff") format("woff");
+}
+
+body {
+  font-family: 'Pixelar', sans-serif;
+}

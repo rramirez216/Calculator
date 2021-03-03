@@ -1,12 +1,13 @@
 .display {
-  grid-column: 1 / 5;
-  grid-row: 1 / 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding-right: 10px;
+  width: 80%;
+  font-size: 3rem;
+  background-color: #464646;
+  color: #70E852;
   
-  font-size: 2rem;
 }
 
 p {

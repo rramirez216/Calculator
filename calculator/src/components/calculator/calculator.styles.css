@@ -1,9 +1,10 @@
 .calculator-layout {
-  width: 300px;
-  height: 500px;
-  /* border: 2px solid black; */
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  width: 572px;
+  height: 1016px;
+  position: relative;
+  
 }
 
+.retro {
+
+}
