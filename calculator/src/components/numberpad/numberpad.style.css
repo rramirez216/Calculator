@@ -1,0 +1,11 @@
+.numpad {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 79%;
+  z-index: 4;
+  position: relative;
+  bottom: 665px;
+  left: 55px
+
+}

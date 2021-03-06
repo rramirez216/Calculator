@@ -3,11 +3,14 @@
   justify-content: flex-end;
   align-items: center;
   padding-right: 10px;
-  width: 80%;
+  width: 70%;
   font-size: 3rem;
-  background-color: #464646;
+  background-color: #000;
   color: #70E852;
-  
+  z-index: 3;
+  position: relative;
+  top: 190px;
+  left: 80px;
 }
 
 p {

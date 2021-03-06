@@ -42,10 +42,6 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      displayNumber: '0',
-      previousInput: null,
-      numberArray: [],
-      operators: [],
       zero: Zero1,
       one: One1,
       two: Two1,
@@ -62,28 +58,59 @@ class App extends Component {
       add: Add1,
       equal: Equal1,
       clear: Clear1,
-      dot: Dot1
+      dot: Dot1,
+      displayNumber: '0',
+      previousInput: null,
+      numberArray: [],
+      operators: [],
+      displayFontSize: '5rem'
     }
   }
   
   handleNumber = (num) => {
     let { numberArray } = this.state
+    let decimal = 0
+    let decimalIndex;
+    let filteredNumArr;
     numberArray.push(num)
-    this.setState({ displayNumber: numberArray.join('') })
+    numberArray.map(num => {
+      if(num === ".") {
+        decimal++
+        decimalIndex = numberArray.indexOf(".")
+        return num
+      } else {
+        return num 
+      }})
+    if(decimal > 1 ) {
+      filteredNumArr = numberArray.filter((num, index) => num !== '.' || (num === numberArray[decimalIndex] && index === decimalIndex))
+      this.setState({ displayNumber: filteredNumArr.join('') })
+    } else {
+        this.setState({ displayNumber: numberArray.join('') })
+    }
+    this.displayLength()
+  }
+
+  displayLength = () => {
+    let {displayNumber} = this.state
+    if(displayNumber.length > 10 && displayNumber.length < 14) {
+      this.setState({ displayFontSize: '4rem' })
+    } else if(displayNumber.length > 13 && displayNumber.length < 18) {
+      this.setState({ displayFontSize: '3rem' })
+    } else if(displayNumber.length > 17) {
+      this.setState({ displayFontSize: '2rem' })
+    } else {
+      this.setState({ displayFontSize: '5rem' })
+    }
   }
 
   
   handleOperatorButton = (sign) => {
     let { displayNumber } = this.state
-    
     let { operators } = this.state
-    // let numbers = [...displayNumber]
     let numbers = displayNumber
 
     operators.push(sign)
-    
     this.setState({ previousInput: numbers, numberArray: [], operators: operators })
-    
   }
   
   handleEqual = () => {
@@ -94,21 +121,21 @@ class App extends Component {
     
     if(operators.includes('+')) {
         calculation = Number(previousInput) + Number(numberArray.join(''))
-        this.setState({displayNumber: calculation, numberArray: calculation})
+        this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       } else if(operators.includes('÷')) {
         calculation = Number(previousInput) / Number(numberArray.join(''))
-        this.setState({displayNumber: calculation, numberArray: calculation})
+        this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       } else if(operators.includes('x')) {
         calculation = Number(previousInput) * Number(numberArray.join(''))
-        this.setState({displayNumber: calculation, numberArray: calculation})
+        this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       } else if(operators.includes('-')) {
         calculation = Number(previousInput) - Number(numberArray.join(''))
-        this.setState({displayNumber: calculation, numberArray: calculation})
+        this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       }
     }
 
     handleClearButton = () => {
-      this.setState({ displayNumber: '0', numberArray: [], operators: [] })
+      this.setState({ displayNumber: '0', numberArray: [], operators: [], displayFontSize: '5rem' })
     }
 
     handleImageMouseDown = (button) => {
@@ -158,33 +185,31 @@ class App extends Component {
       {id: 2, button: 7, pic: this.state.seven, type: 'number'},
       {id: 3, button: 8, pic: this.state.eight, type: 'number'},
       {id: 4, button: 9, pic: this.state.nine, type: 'number'},
-      {id: 4, button: 'x', pic: this.state.multiply, type: 'operator'},
-      {id: 5, button: 4, pic: this.state.four, type: 'number'},
-      {id: 6, button: 5, pic: this.state.five, type: 'number'},
-      {id: 7, button: 6, pic: this.state.six, type: 'number'},
-      {id: 8, button: '-', pic: this.state.subtract, type: 'operator'},
-      {id: 9, button: 1, pic: this.state.one, type: 'number'},
-      {id: 10, button: 2, pic: this.state.two, type: 'number'},
-      {id: 11, button: 3, pic: this.state.three, type: 'number'},
-      {id: 12, button: '+', pic: this.state.add, type: 'operator'},
-      {id: 13, button: 0, pic: this.state.zero, type: 'number'},
-      {id: 14, button: '.', pic: this.state.dot, type: 'number'},
-      {id: 15, button: 'equal', pic: this.state.equal, buttonFunction: this.handleEqual}
+      {id: 5, button: 'x', pic: this.state.multiply, type: 'operator'},
+      {id: 6, button: 4, pic: this.state.four, type: 'number'},
+      {id: 7, button: 5, pic: this.state.five, type: 'number'},
+      {id: 8, button: 6, pic: this.state.six, type: 'number'},
+      {id: 9, button: '-', pic: this.state.subtract, type: 'operator'},
+      {id: 10, button: 1, pic: this.state.one, type: 'number'},
+      {id: 11, button: 2, pic: this.state.two, type: 'number'},
+      {id: 12, button: 3, pic: this.state.three, type: 'number'},
+      {id: 13, button: '+', pic: this.state.add, type: 'operator'},
+      {id: 14, button: 0, pic: this.state.zero, type: 'number'},
+      {id: 15, button: '.', pic: this.state.dot, type: 'number'},
+      {id: 16, button: 'equal', pic: this.state.equal, buttonFunction: this.handleEqual}
     ]
-    const test = {pic: this.state.clear, down: this.handleImageMouseDown, up: this.handleImageMouseUp}
+    
     return(
       <div className='App'>
         <Calculator
           currentNumber={ this.state.displayNumber }
           handleNumber={ this.handleNumber }
-          handleClearButton={ this.handleClearButton }
           handleOperatorButton={ this.handleOperatorButton }
-          handleEqual={ this.handleEqual }
           calculator={ RetroCalculator }
           allButtons={ allButtons }
           mouseDown={ this.handleImageMouseDown }
           mouseUp= { this.handleImageMouseUp }
-          test={ test }
+          font= { this.state.displayFontSize }
         />
       </div>
     )

@@ -1,17 +1,7 @@
 .button {
-  width: 75px;
-  height: 83.33px;
-  border: 1px solid black;
-  border-radius: 50%;
-  font-size: 2.7rem;
-  font-family: 'Pixelar', sans-serif;
+  margin-bottom: 10px;
 }
 
-.zero {
-  width: 150px;
-  height: 83.33px;
-  border: 1px solid black;
-  font-size: 2.7rem;
-  border-radius: 50%;
-  font-family: 'Pixelar', sans-serif;
+img:hover {
+  cursor:pointer;
 }

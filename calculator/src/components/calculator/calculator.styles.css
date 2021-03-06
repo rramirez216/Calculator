@@ -2,9 +2,9 @@
   width: 572px;
   height: 1016px;
   position: relative;
-  
+  z-index: 1;
 }
 
 .retro {
-
+  z-index: 2;
 }

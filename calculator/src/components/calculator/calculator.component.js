@@ -8,13 +8,13 @@ export const Calculator = props => (
   <main className='calculator-layout'>
     <Display
       currentNumber={ props.currentNumber }
+      font= { props.font }
     />
     <img 
       src={props.calculator}
-      alt="calculator" className="retro"
+      alt="calculator"
+      className="retro"
     />
-    {/* <img src={props.test.pic} alt="button" onMouseDown={props.test.down}
-    onMouseUp={props.test.up}/> */}
     <NumberPad
       handleClearButton={ props.handleClearButton }
       handleEqual={ props.handleEqual }
