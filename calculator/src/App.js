@@ -103,6 +103,18 @@ class App extends Component {
     }
   }
 
+  calculationLength = (calculation) => {
+    if(calculation.length > 10 && calculation.length < 14) {
+      this.setState({ displayFontSize: '4rem' })
+    } else if(calculation.length > 13 && calculation.length < 18) {
+      this.setState({ displayFontSize: '3rem' })
+    } else if(calculation.length > 17) {
+      this.setState({ displayFontSize: '2rem' })
+    } else {
+      this.setState({ displayFontSize: '5rem' })
+    }
+  }
+
   
   handleOperatorButton = (sign) => {
     let { displayNumber } = this.state
@@ -118,18 +130,27 @@ class App extends Component {
     let { numberArray } = this.state
     let { operators } = this.state
     let calculation = 0
+    let calcString = '';
     
     if(operators.includes('+')) {
         calculation = Number(previousInput) + Number(numberArray.join(''))
+        calcString = calculation.toString()
+        this.calculationLength(calcString)
         this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       } else if(operators.includes('÷')) {
         calculation = Number(previousInput) / Number(numberArray.join(''))
+        calcString = calculation.toString()
+        this.calculationLength(calcString)
         this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       } else if(operators.includes('x')) {
         calculation = Number(previousInput) * Number(numberArray.join(''))
+        calcString = calculation.toString()
+        this.calculationLength(calcString)
         this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       } else if(operators.includes('-')) {
         calculation = Number(previousInput) - Number(numberArray.join(''))
+        calcString = calculation.toString()
+        this.calculationLength(calcString)
         this.setState({displayNumber: calculation, numberArray: calculation, operators: []})
       }
     }

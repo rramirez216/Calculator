@@ -4,15 +4,17 @@
   align-items: center;
   padding-right: 10px;
   width: 70%;
-  font-size: 3rem;
+  font-size: 5rem;
   background-color: #000;
   color: #70E852;
   z-index: 3;
   position: relative;
   top: 190px;
   left: 80px;
+  overflow: hidden;
 }
 
 p {
   margin: 0;
+  overflow: hidden;
 }
